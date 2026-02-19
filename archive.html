@@ -157,13 +157,29 @@
             color: white;
         }
 
-        /* Mobile Optimizations */
         @media (max-width: 600px) {
             .archive-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .prev, .next { display: none; }
             .close-lightbox { top: 20px; right: 20px; font-size: 50px; }
             .lightbox-content { max-width: 95%; }
             #scrollTopBtn { bottom: 20px; right: 20px; padding: 10px; font-size: 0.8rem; }
+        }
+
+        .lightbox-logo {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 80px; /* Adjust size as needed */
+            opacity: 0.6; /* Semi-transparent so it stays subtle */
+            pointer-events: none; /* So it doesn't block clicks */
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-logo {
+                width: 60px;
+                top: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -180,6 +196,7 @@
     <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
 
     <div id="lightbox" class="lightbox">
+        <img src="Logo_nobackground.png" class="lightbox-logo" alt="Pulse Logo">
         <span class="close-lightbox">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
         <a class="prev" onclick="event.stopPropagation(); changePhoto(-1)">&#10094;</a>
