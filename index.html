@@ -31,7 +31,10 @@
             margin: 0;
         }
         .next-event { 
-            margin-top: 20px; 
+            margin-top: 20px;
+            margin-bottom: 60px;
+            display: inline-block;
+            width: auto; 
             border: 1px solid var(--pulse-orange); 
             padding: 10px 20px; 
             color: var(--text); 
@@ -96,8 +99,10 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 20px;
+            position: relative;
+            clear: both;
+            margin-top: 100px;
+            padding: 40px 0;
             width: 100%;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
@@ -125,6 +130,20 @@
             nav {left: 50%; top: 20px; }
             .main-logo { width: 220px; }
             h1 { font-size: 2.5rem; }
+            .next-event {
+                margin-bottom: 80px;
+                width: 90%;
+                font-size: 0.8rem;
+            }
+
+            footer {
+                margin-top: 60px;
+            }
+
+            .social-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
         }
 
         body::before {
@@ -197,7 +216,6 @@
 </head>
 
 <body>
-
     <div class="header">
         <nav>
             <a href="archive.html">Archive</a>
@@ -206,22 +224,19 @@
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
         <div class="next-event">Pulse. #2: announcement very soon</div>
+    </div> <footer>
+        <div class="footer-contact">
+            FOR BOOKINGS OR INQUIRIES: <a href="mailto:info@pulseraves.ch">info@pulseraves.ch</a>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/pulse.ravesss" target="_blank">INSTAGRAM</a>
+            <a href="https://www.tiktok.com/@pulse.raves" target="_blank">TIKTOK</a>
+            <a href="https://www.youtube.com/@pulse.ravesss" target="_blank">YOUTUBE</a>
+        </div>
 
-        <footer>
-            <div class="footer-contact">
-                FOR BOOKINGS OR INQUIRIES: <a href="mailto:info@pulseraves.ch">info@pulseraves.ch</a>
-            </div>
-    
-            <div class="social-links">
-                <a href="https://instagram.com/pulse.ravesss" target="_blank">INSTAGRAM</a>
-                <a href="https://www.tiktok.com/@pulse.raves" target="_blank">TIKTOK</a>
-                <a href="https://www.youtube.com/@pulse.ravesss" target="_blank">YOUTUBE</a>
-            </div>
-
-            <p class="copyright">&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
-        </footer>
-    </div>
-
+        <p class="copyright">&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
+    </footer>
 </body>
 
 </html>
