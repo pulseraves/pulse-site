@@ -178,6 +178,33 @@
                 left: 20px;
             }
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* This creates a very fine, dark noise pattern */
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png"); 
+            opacity: 0.15; /* Keep it subtle so it doesn't distract */
+            pointer-events: none; /* Allows you to still click everything */
+            z-index: -1; /* Keeps it behind your logo and text */
+        }
+
+        /* Optional: Add a subtle 'vignette' to make the center glow more */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
