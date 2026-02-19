@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse. #1 | Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pulse-orange: #C34E0A;
+            --bg: #000000;
+            --text: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            padding: 40px 20px;
+        }
+
+        nav { margin-bottom: 60px; }
+
+        .back-button {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            color: var(--pulse-orange);
+            border-color: var(--pulse-orange);
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--pulse-orange);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--pulse-orange);
+            padding-left: 15px;
+        }
+
+        /* The Grid */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .archive-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #222;
+            background: #111;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+        }
+
+        .archive-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.7);
+            transition: all 0.5s ease;
+        }
+
+        .archive-item:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+        }
+
+        .event-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--pulse-orange);
+            font-size: 0.6rem;
+            padding: 5px 10px;
+            letter-spacing: 1px;
+            pointer-events: none;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+            border: 1px solid var(--pulse-orange);
+            cursor: pointer;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 20px;
+            color: var(--pulse-orange);
+            font-size: 40px;
+            text-decoration: none;
+            user-select: none;
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        /* Scroll To Top Button */
+        #scrollTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: 1px solid var(--pulse-orange);
+            outline: none;
+            background-color: var(--bg);
+            color: var(--pulse-orange);
+            cursor: pointer;
+            padding: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--pulse-orange);
+            color: white;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 600px) {
+            .archive-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .prev, .next { display: none; }
+            .close-lightbox { top: 20px; right: 20px; font-size: 50px; }
+            .lightbox-content { max-width: 95%; }
+            #scrollTopBtn { bottom: 20px; right: 20px; padding: 10px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-button">← RETURN</a>
+    </nav>
+
+    <h2>PAST_SESSIONS</h2>
+
+    <div class="archive-grid" id="photo-gallery"></div>
+
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a class="prev" onclick="event.stopPropagation(); changePhoto(-1)">&#10094;</a>
+        <a class="next" onclick="event.stopPropagation(); changePhoto(1)">&#10095;</a>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('photo-gallery');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        const totalPhotos = 218;
+        let currentPhotoIndex = 1;
+
+        // 1. Generate Gallery
+        for (let i = 1; i <= totalPhotos; i++) {
+            const photoNumber = String(i).padStart(3, '0');
+            const fileName = `images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
+
+            const item = document.createElement('div');
+            item.className = 'archive-item';
+            item.onclick = () => openLightbox(i);
+            
+            item.innerHTML = `
+                <img src="${fileName}" alt="Pulse Event ${photoNumber}" loading="lazy">
+                <div class="event-label">EVENT_001 / FEB_2026</div>
+            `;
+            gallery.appendChild(item);
+        }
+
+        // 2. Scroll Logic
+        window.onscroll = function() { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // 3. Lightbox Functions
+        function openLightbox(index) {
+            currentPhotoIndex = index;
+            updateLightbox();
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightbox() {
+            const photoNumber = String(currentPhotoIndex).padStart(3, '0');
+            lightboxImg.src = `images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
+        }
+
+        function changePhoto(step) {
+            currentPhotoIndex += step;
+            if (currentPhotoIndex > totalPhotos) currentPhotoIndex = 1;
+            if (currentPhotoIndex < 1) currentPhotoIndex = totalPhotos;
+            updateLightbox();
+        }
+
+        lightboxImg.onclick = () => changePhoto(1);
+        lightbox.onclick = (e) => { if (e.target === lightbox) closeLightbox(); };
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        document.querySelector('.close-lightbox').onclick = closeLightbox;
+
+        document.onkeydown = (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === "Escape") closeLightbox();
+                if (e.key === "ArrowRight") changePhoto(1);
+                if (e.key === "ArrowLeft") changePhoto(-1);
+            }
+        };
+    </script>
+</body>
+</html>
