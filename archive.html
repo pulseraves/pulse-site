@@ -47,7 +47,6 @@
             padding-left: 15px;
         }
 
-        /* The Grid */
         .archive-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -90,7 +89,6 @@
             pointer-events: none;
         }
 
-        /* Lightbox Styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -134,9 +132,8 @@
         .prev { left: 20px; }
         .next { right: 20px; }
 
-        /* Scroll To Top Button */
         #scrollTopBtn {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -157,7 +154,6 @@
             color: white;
         }
 
-        /* Mobile Optimizations */
         @media (max-width: 600px) {
             .archive-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .prev, .next { display: none; }
@@ -173,7 +169,7 @@
         <a href="index.html" class="back-button">← RETURN</a>
     </nav>
 
-    <h2>PAST_SESSIONS</h2>
+    <h2>Pulse. #1</h2>
 
     <div class="archive-grid" id="photo-gallery"></div>
 
@@ -194,23 +190,22 @@
         const totalPhotos = 218;
         let currentPhotoIndex = 1;
 
-        // 1. Generate Gallery
         for (let i = 1; i <= totalPhotos; i++) {
             const photoNumber = String(i).padStart(3, '0');
             const fileName = `images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
-
+            const dynamicLabel = `${photoNumber} / FEB_2026`;
             const item = document.createElement('div');
             item.className = 'archive-item';
             item.onclick = () => openLightbox(i);
-            
+    
             item.innerHTML = `
                 <img src="${fileName}" alt="Pulse Event ${photoNumber}" loading="lazy">
-                <div class="event-label">EVENT_001 / FEB_2026</div>
+                <div class="event-label">${dynamicLabel}</div>
             `;
             gallery.appendChild(item);
         }
 
-        // 2. Scroll Logic
+
         window.onscroll = function() { scrollFunction() };
 
         function scrollFunction() {
@@ -225,7 +220,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // 3. Lightbox Functions
         function openLightbox(index) {
             currentPhotoIndex = index;
             updateLightbox();
