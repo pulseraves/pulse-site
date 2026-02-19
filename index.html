@@ -134,14 +134,64 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* This creates a real analog noise effect */
             background: 
                 linear-gradient(rgba(20, 20, 20, 0.4), rgba(0, 0, 0, 0.7)),
                 url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
             filter: contrast(150%) brightness(100%);
-            opacity: 0.12;
+            opacity: 0.7;
             pointer-events: none;
             z-index: -1;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-bottom: 40px;
+            text-align: center;
+            border-top: 1px solid #222;
+            padding-top: 40px;
+        }
+
+        .footer-contact {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: #888;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: var(--pulse-orange);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+            text-shadow: 0 0 10px var(--pulse-orange);
+        }
+
+        .copyright {
+            font-size: 0.6rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .social-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .social-links a {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
@@ -161,11 +211,14 @@
             <div class="footer-contact">
                 FOR BOOKINGS OR INQUIRIES: <a href="mailto:info@pulseraves.ch">info@pulseraves.ch</a>
             </div>
-            <p>&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
-            <p>
-                Instagram: <a href="https://instagram.com/pulse.ravesss">@pulse.ravesss</a>
-                |
-                Tiktok: <a href="https://www.tiktok.com/@pulse.raves" target="_blank">@pulse.raves</a> </p>
+    
+            <div class="social-links">
+                <a href="https://instagram.com/pulse.ravesss" target="_blank">INSTAGRAM</a>
+                <a href="https://www.tiktok.com/@pulse.raves" target="_blank">TIKTOK</a>
+                <a href="https://www.youtube.com/@pulse.ravesss" target="_blank">YOUTUBE</a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
         </footer>
     </div>
 
