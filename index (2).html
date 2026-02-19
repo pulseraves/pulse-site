@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse.</title>
+    <link rel="icon" type="image/png" href="Logo_nobackground.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pulse-orange: #C34E0A;
+            --bg: #000000;
+            --text: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            font-family: sans-serif; 
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            color: var(--pulse-orange);
+            font-size: clamp(3rem, 12vw, 8rem);
+            text-transform: none;
+            letter-spacing: 0.03em;
+            margin: 0;
+        }
+        .next-event { 
+            margin-top: 20px; 
+            border: 1px solid var(--pulse-orange); 
+            padding: 10px 20px; 
+            color: var(--text); 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            animation: blink 2s infinite; 
+        }
+
+        @keyframes blink { 50% { opacity: 0.3; }}
+
+        .main-logo {
+            width: 320px;
+            height: auto;
+            margin-bottom: 10px;
+            animation: pulse-dime 4s infinite ease-in-out;
+            filter: contrast(1.1) brightness(1.1);
+        }
+
+        @keyframes pulse-dime {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        nav {
+            position: absolute;
+            top: 40px;
+            left: 75%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 25px;
+            z-index: 100;
+        }
+
+        nav a {
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: none;
+            transition: 0.3s;
+
+            border: 1px solid #333;
+            padding: 8px 15px;
+        }
+
+        nav a:hover {
+            color: var(--pulse-orange);
+            border-color: var(--pulse-orange);
+            background: rgba(195, 78, 10, 0.05);
+        }
+
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: #555;
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+        footer a {
+            color: var(--pulse-orange);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .footer-contact {
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+
+        @media (max-width: 600px) {
+            nav {left: 50%; top: 20px; }
+            .main-logo { width: 220px; }
+            h1 { font-size: 2.5rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <nav>
+            <a href="archive.html">Archive</a>
+        </nav>
+        
+        <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
+        <h1>Pulse.</h1>
+        <div class="next-event">NEXT EVENT: TBA / 2026</div>
+
+        <footer>
+            <div class="footer-contact">
+                FOR BOOKINGS OR INQUIRIES: <a href="mailto:info@pulseraves.ch">info@pulseraves.ch</a>
+            </div>
+            <p>&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
+            <p>INSTAGRAM: <a href="https://instagram.com/pulse.ravesss">@PULSE.RAVESSS</a></p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
