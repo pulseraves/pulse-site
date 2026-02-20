@@ -207,7 +207,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="back-button">← RETURN</a>
+        <a href="/" class="back-button">← RETURN</a>
     </nav>
 
     <h2>Pulse. #1</h2>
@@ -217,7 +217,7 @@
     <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
 
     <div id="lightbox" class="lightbox">
-        <img src="Logo_nobackground.png" class="lightbox-logo" alt="Pulse Logo">
+        <img src="/Logo_nobackground.png" class="lightbox-logo" alt="Pulse Logo">
         <span class="close-lightbox">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
         <a class="prev" onclick="event.stopPropagation(); changePhoto(-1)">&#10094;</a>
@@ -234,7 +234,7 @@
 
         for (let i = 1; i <= totalPhotos; i++) {
             const photoNumber = String(i).padStart(3, '0');
-            const fileName = `images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
+            const fileName = `/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
             const dynamicLabel = `${photoNumber} / FEB_2026`;
             const item = document.createElement('div');
             item.className = 'archive-item';
