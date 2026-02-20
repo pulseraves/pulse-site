@@ -83,17 +83,22 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start; 
-            padding-left: 60px;
+            padding-left: 10%; /* Fluid padding */
+            padding-right: 5%;
             gap: 40px;
+            width: 100%;
+            box-sizing: border-box; /* Ensures padding stays inside 30% width */
         }
 
         .side-menu a {
             font-family: 'Orbitron', sans-serif;
             text-decoration: none;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); /* Fluid font size */
             color: white;
             letter-spacing: 5px;
             transition: 0.3s;
+            white-space: nowrap; /* Prevents text wrap */
+            width: 100%;
         }
 
         .side-menu a:hover {
@@ -230,6 +235,7 @@
             .menu-content {
                 align-items: center;
                 padding-left: 0;
+                padding-right: 0;
             }
 
             .header {
@@ -263,6 +269,7 @@
 
             .side-menu a {
                 font-size: 1.5rem;
+                width: auto; /* Reset for centering */
             }
 
             footer {
