@@ -6,11 +6,6 @@
     <title>Pulse. #1 | Archive</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/Logo_nobackground.png">
-    <meta property="og:title" content="Pulse.">
-    <meta property="og:description" content="Pulse. #1 | Archive">
-    <meta property="og:image" content="https://www.pulseraves.ch/Logo_nobackground.png">
-    <meta property="og:url" content="https://www.pulseraves.ch">
-    <meta name="twitter:card" content="summary_large_image">
     <style>
         :root {
             --pulse-orange: #C34E0A;
@@ -52,11 +47,8 @@
         }
 
         .menu-icon div {
-            width: 25px;
-            height: 2px;
-            background-color: white;
-            margin: 6px 0;
-            transition: 0.4s;
+            width: 25px; height: 2px; background-color: white;
+            margin: 6px 0; transition: 0.4s;
         }
 
         .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
@@ -64,199 +56,83 @@
         .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
 
         .side-menu {
-            height: 100dvh;
-            width: 0;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            overflow-x: hidden;
+            height: 100dvh; width: 0; position: fixed; z-index: 2000;
+            top: 0; right: 0; background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px); overflow-x: hidden;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            display: flex; flex-direction: column; justify-content: flex-start;
             border-left: 1px solid rgba(195, 78, 10, 0.3);
         }
 
         .menu-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-top: 15vh;
-            padding-left: 10%;
-            padding-right: 5%;
-            gap: 40px;
-            width: 100%;
-            box-sizing: border-box;
+            display: flex; flex-direction: column; align-items: flex-start;
+            padding-top: 15vh; padding-left: 10%; padding-right: 5%;
+            gap: 40px; width: 100%; box-sizing: border-box;
         }
 
         .side-menu a {
-            font-family: 'Orbitron', sans-serif;
-            text-decoration: none;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: white;
-            letter-spacing: 5px;
-            transition: 0.3s;
-            white-space: nowrap;
-            display: block;
-            width: 100%;
+            font-family: 'Orbitron', sans-serif; text-decoration: none;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: white;
+            letter-spacing: 5px; transition: 0.3s; white-space: nowrap;
+            display: block; width: 100%;
         }
-
         .side-menu a:hover { color: var(--pulse-orange); }
 
         h2 {
-            font-weight: 500;
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            color: var(--pulse-orange);
-            margin-top: 20px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--pulse-orange);
-            padding-left: 15px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            font-weight: 500; font-size: 1.5rem; letter-spacing: 4px;
+            color: var(--pulse-orange); margin-top: 20px; margin-bottom: 40px;
+            border-left: 4px solid var(--pulse-orange); padding-left: 15px;
+            max-width: 1200px; margin-left: auto; margin-right: auto;
         }
-
         .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px; max-width: 1200px; margin: 0 auto;
         }
-
         .archive-item {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid #222;
-            background: #111;
-            aspect-ratio: 1 / 1;
-            cursor: pointer;
+            position: relative; overflow: hidden; border: 1px solid #222;
+            background: #111; aspect-ratio: 1 / 1; cursor: pointer;
         }
-
         .archive-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) brightness(0.7);
-            transition: all 0.5s ease;
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%) brightness(0.7); transition: all 0.5s ease;
         }
-
-        .archive-item:hover img {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.05);
-        }
-
+        .archive-item:hover img { filter: grayscale(0%) brightness(1); transform: scale(1.05); }
         .event-label {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--pulse-orange);
-            font-size: 0.6rem;
-            padding: 5px 10px;
-            letter-spacing: 1px;
-            pointer-events: none;
+            position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.8);
+            color: var(--pulse-orange); font-size: 0.6rem; padding: 5px 10px;
+            letter-spacing: 1px; pointer-events: none;
         }
-
         .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 3000; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; z-index: 3000; top: 0; left: 0;
+            width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px); justify-content: center; align-items: center;
         }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85%;
-            border: 1px solid var(--pulse-orange);
-            cursor: pointer;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            padding: 20px;
-            color: var(--pulse-orange);
-            font-size: 40px;
-            text-decoration: none;
-            user-select: none;
-        }
-        .prev { left: 20px; }
-        .next { right: 20px; }
-
+        .lightbox-content { max-width: 90%; max-height: 85%; border: 1px solid var(--pulse-orange); cursor: pointer; }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
+        .prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 20px; color: var(--pulse-orange); font-size: 40px; text-decoration: none; user-select: none; }
+        .prev { left: 20px; } .next { right: 20px; }
         #scrollTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 99;
-            border: 1px solid var(--pulse-orange);
-            outline: none;
-            background-color: var(--bg);
-            color: var(--pulse-orange);
-            cursor: pointer;
-            padding: 15px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            transition: 0.3s;
+            display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99;
+            border: 1px solid var(--pulse-orange); outline: none; background-color: var(--bg);
+            color: var(--pulse-orange); cursor: pointer; padding: 15px;
+            font-family: 'Orbitron', sans-serif; font-size: 1rem; transition: 0.3s;
         }
-
-        #scrollTopBtn:hover {
-            background-color: var(--pulse-orange);
-            color: white;
-        }
-
-        .lightbox-logo {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            width: 80px;
-            opacity: 0.6;
-            pointer-events: none;
-        }
+        #scrollTopBtn:hover { background-color: var(--pulse-orange); color: white; }
+        .lightbox-logo { position: absolute; top: 25px; left: 25px; width: 80px; opacity: 0.6; pointer-events: none; }
 
         @media (max-width: 600px) {
             body { padding: 80px 15px 40px 15px; }
             .menu-icon { top: 20px; right: 20px; }
-            .menu.content {
-                align-items: center;
-                padding-top: 12vh;
-                padding-left: 0;
-                padding-right: 0;
-            }
+            .menu-content { align-items: center; padding-top: 12vh; padding-left: 0; padding-right: 0; }
             .archive-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .prev, .next { display: none; }
             .close-lightbox { top: 20px; right: 20px; font-size: 50px; }
             .lightbox-content { max-width: 95%; }
             #scrollTopBtn { bottom: 20px; right: 20px; padding: 10px; font-size: 0.8rem; }
-            .side-menu {
-                border-left: none;}
+            .side-menu { border-left: none; }
             .side-menu a { font-size: 1.5rem; }
             h2 { font-size: 1.1rem; margin-bottom: 25px; }
         }
-
-        .lightbox-content { cursor: e-resize; }
     </style>
 </head>
 <body>
@@ -276,9 +152,7 @@
     </nav>
 
     <h2>Pulse. #1 - Alte Kaserne</h2>
-
     <div class="archive-grid" id="photo-gallery"></div>
-
     <button onclick="topFunction()" id="scrollTopBtn" title="Go to top">↑</button>
 
     <div id="lightbox" class="lightbox">
@@ -296,8 +170,9 @@
             const menu = document.getElementById("sideMenu");
             const isMobile = window.innerWidth <= 600;
             const targetWidth = isMobile ? "100%" : "30%";
+            
             if (!menu.style.width || menu.style.width === "0px" || menu.style.width === "0%") {
-                menu.style.width = "100%";
+                menu.style.width = targetWidth;
             } else {
                 menu.style.width = "0%";
             }
@@ -317,62 +192,37 @@
             const item = document.createElement('div');
             item.className = 'archive-item';
             item.onclick = () => openLightbox(i);
-    
-            item.innerHTML = `
-                <img src="${fileName}" alt="Pulse Event ${photoNumber}" loading="lazy">
-                <div class="event-label">${dynamicLabel}</div>
-            `;
+            item.innerHTML = `<img src="${fileName}" alt="Pulse Event ${photoNumber}" loading="lazy"><div class="event-label">${dynamicLabel}</div>`;
             gallery.appendChild(item);
         }
-
         window.onscroll = function() { scrollFunction() };
-
         function scrollFunction() {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                scrollBtn.style.display = "block";
-            } else {
-                scrollBtn.style.display = "none";
-            }
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) { scrollBtn.style.display = "block"; } else { scrollBtn.style.display = "none"; }
         }
-
-        function topFunction() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-
+        function topFunction() { window.scrollTo({top: 0, behavior: 'smooth'}); }
         function openLightbox(index) {
-            currentPhotoIndex = index;
-            updateLightbox();
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            currentPhotoIndex = index; updateLightbox();
+            lightbox.style.display = 'flex'; document.body.style.overflow = 'hidden';
         }
-
         function updateLightbox() {
             const photoNumber = String(currentPhotoIndex).padStart(3, '0');
             lightboxImg.src = `/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
         }
-
         function changePhoto(step) {
             currentPhotoIndex += step;
             if (currentPhotoIndex > totalPhotos) currentPhotoIndex = 1;
             if (currentPhotoIndex < 1) currentPhotoIndex = totalPhotos;
             updateLightbox();
         }
-
         lightboxImg.onclick = (e) => {
             e.stopPropagation();
             const rect = lightboxImg.getBoundingClientRect();
             const x = e.clientX - rect.left;
-            if (x < rect.width * 0.4) changePhoto(-1);
-            else changePhoto(1);
+            if (x < rect.width * 0.4) changePhoto(-1); else changePhoto(1);
         };
-
         lightbox.onclick = (e) => { if (e.target === lightbox) closeLightbox(); };
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+        function closeLightbox() { lightbox.style.display = 'none'; document.body.style.overflow = 'auto'; }
         document.querySelector('.close-lightbox').onclick = closeLightbox;
-
         document.onkeydown = (e) => {
             if (lightbox.style.display === 'flex') {
                 if (e.key === "Escape") closeLightbox();
@@ -380,12 +230,9 @@
                 if (e.key === "ArrowLeft") changePhoto(-1);
             }
         };
-
-        let touchstartX = 0;
-        let touchendX = 0;
+        let touchstartX = 0; let touchendX = 0;
         lightbox.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
         lightbox.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleGesture(); }, false);
-        
         function handleGesture() {
             if (touchendX < touchstartX - 50) changePhoto(1);
             if (touchendX > touchstartX + 50) changePhoto(-1);
