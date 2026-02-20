@@ -27,7 +27,6 @@
         }
 
         #bg-image {
-            content: "";
             position: fixed;
             top: 0;
             left: 0;
@@ -38,7 +37,7 @@
             filter: brightness(0.4) blur(0px); 
             z-index: -1;
             pointer-events: none;
-            transition: filter 0.8s ease-out;
+            transition: filter 1.2s ease-out;
         }
 
         .menu-icon {
@@ -94,41 +93,38 @@
         }
 
         .vision-logo {
-            width: 120px;
-            margin-bottom: 60px;
-            filter: drop-shadow(0 0 10px rgba(195, 78, 10, 0.3));
+            width: clamp(140px, 15vh, 200px); 
+            margin-bottom: 50px;
+            filter: drop-shadow(0 0 15px rgba(195, 78, 10, 0.2));
         }
 
         .vision-text {
-            line-height: 2;
+            line-height: 2.2;
             letter-spacing: 3px;
-            font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+            font-size: clamp(0.95rem, 1.6vw, 1.4rem);
             text-transform: uppercase;
         }
 
         .highlight {
             display: block;
             margin-top: 40px;
-            font-size: 1.6em;
+            font-size: 1.4em;
             font-weight: 600;
-            text-shadow: 0 0 20px rgba(195, 78, 10, 0.6);
-            animation: heartbeat 3s infinite ease-in-out;
+            animation: subtlePulse 4s infinite ease-in-out;
         }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
-            15% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 25px var(--pulse-orange); }
-            30% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
-            45% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 25px var(--pulse-orange); }
-            100% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
+        @keyframes subtlePulse {
+            0% { transform: scale(1); opacity: 0.85; text-shadow: 0 0 5px var(--pulse-orange); }
+            50% { transform: scale(1.03); opacity: 1; text-shadow: 0 0 15px var(--pulse-orange); }
+            100% { transform: scale(1); opacity: 0.85; text-shadow: 0 0 5px var(--pulse-orange); }
         }
 
         @media (max-width: 600px) {
             .menu-icon { top: 20px; right: 20px; }
             .menu-content { padding-top: 12vh; padding-left: 12%; }
             .side-menu { border-left: none; }
-            .vision-logo { width: 90px; margin-bottom: 40px; }
-            .vision-text { font-size: 0.85rem; line-height: 2.2; letter-spacing: 2px; }
+            .vision-logo { width: 110px; margin-bottom: 30px; }
+            .vision-text { font-size: 0.9rem; line-height: 2.4; letter-spacing: 2px; }
             .vision-container { padding: 0 25px; }
         }
     </style>
@@ -182,13 +178,11 @@
         let blurTimeout;
 
         function applyBlur() {
-            bg.style.filter = "brightness(0.4) blur(8px)";
-            
+            bg.style.filter = "brightness(0.4) blur(4px)";
             clearTimeout(blurTimeout);
-            
             blurTimeout = setTimeout(() => {
                 bg.style.filter = "brightness(0.4) blur(0px)";
-            }, 1500);
+            }, 1200);
         }
 
         window.addEventListener('mousemove', applyBlur);
