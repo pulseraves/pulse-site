@@ -19,6 +19,14 @@
             color: var(--text);
             margin: 0;
             font-family: sans-serif; 
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
         }
 
         h1 {
@@ -31,8 +39,8 @@
             margin: 10 px 0;
         }
         .next-event { 
-            margin-top: 10px;
-            margin-bottom: 2vh;
+            margin-top: 20px;
+            margin-bottom: 20px;
             display: inline-block;
             width: auto; 
             border: 1px solid var(--pulse-orange); 
@@ -91,27 +99,13 @@
         }
 
         .header {
-            height: 100vh;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-        }
-
-        footer {
-            position: relative;
-            clear: both;
-            margin-top: 2vh;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            color: #555;
-            z-index: 10;
-            letter-spacing: 1px;
+            width: 100%
         }
         footer a {
             color: var(--pulse-orange);
@@ -123,24 +117,23 @@
             color: #fff;
         }
 
-        .footer-contact {
-            margin-bottom: 10px;
-            color: #bbb;
-        }
-
         @media (max-width: 600px) {
+            body {
+                justify-content: flex-start;
+                padding-top: 60px;
+            }
             nav {left: 50%; top: 20px; }
             .main-logo { width: 220px; }
             h1 { font-size: 2.5rem; }
             .next-event {
                 margin-top: 20px;
-                margin-bottom: 60px;
+                margin-bottom: 40px;
                 width: 90%;
                 font-size: 0.8rem;
             }
 
             footer {
-                margin-top: 40px;
+                margin-top: 20px;
             }
 
             .social-links {
