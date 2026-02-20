@@ -176,7 +176,7 @@
         @media (max-width: 600px) {
             body {
                 justify-content: space-between;
-                padding-top: 20px; 
+                padding: 20px 0;
                 height: 100dvh;
                 box-sizing: border-box;
             }
@@ -190,60 +190,67 @@
                 left: auto;
                 top: 0;
                 transform: none;
-                margin-bottom: 20px;
                 display: flex;
                 justify-content: center;
                 width: 100%;
+                z-index: 100;
             }
-
             .header {
-                justify-content: flex-start;
-                margin-top: -10px; 
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; 
+                align-items: center;     
+                width: 100%;
+                margin-top: -20px; 
             }
 
             .main-logo { 
-                width: 210px;
-                margin-bottom: 5px;
+                width: 200px; 
+                margin-bottom: 0;
             }
             
             h1 { 
-                font-size: 4.8rem;
+                font-size: 4.2rem; 
                 margin: 0;
-                line-height: 1;
+                line-height: 1.1;
+                width: 100%;
             }
             
             .next-event {
-                margin-top: 15px;
+                margin-top: 20px;
                 width: 85%;
                 font-size: 0.7rem;
+                box-sizing: border-box;
             }
             footer {
                 margin-top: auto;
-                padding-bottom: env(safe-area-inset-bottom, 20px);
-                padding-top: 15px;
+                padding-bottom: env(safe-area-inset-bottom, 15px);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 12px;
+                gap: 12px; 
+                width: 100%;
             }
 
-            .footer-contact, .social-links, .copyright {
+            .footer-contact, .social-links {
                 margin: 0;
             }
 
             .social-links {
-                gap: 20px;
-                flex-wrap: nowrap;
+                gap: 25px;
             }
-            
+
             .social-links a {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
                 font-weight: 600;
             }
-            
             .copyright {
-                font-size: 0.5rem;
-                opacity: 0.6;
+                font-size: 0.55rem;
+                color: #888; 
+                letter-spacing: 1px;
+                margin-top: -5px;
+                margin-bottom: 5px;
             }
         }
     </style>
@@ -252,12 +259,12 @@
 <body>
     <div class="header">
         <nav>
-            <a href="/archive/">Archive</a>
+            <a href="/archive/">Photobook</a>
         </nav>
         
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
-        <div class="next-event">Pulse. #2: announcement very soon</div>
+        <div class="next-event">Pulse. #2: announcement soon</div>
     </div> 
 
     <footer>
