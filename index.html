@@ -118,7 +118,8 @@
             letter-spacing: 0.03em;
             margin: 10px 0;
             display: inline-block;
-            animation: subtlePulse 4s infinite ease-in-out;
+            animation: textPulse 4s infinite ease-in-out;
+            animation-delay: 0.5s; 
         }
 
         .next-event { 
@@ -143,12 +144,18 @@
             margin-top: 1vh;
             margin-bottom: 1vh;
             filter: contrast(1.1) brightness(1.1);
-            animation: subtlePulse 4s infinite ease-in-out;
+            animation: logoPulse 4s infinite ease-in-out;
         }
 
-        @keyframes subtlePulse {
+        @keyframes logoPulse {
+            0% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.04); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.85; }
+        }
+
+        @keyframes textPulse {
             0% { transform: scale(1); opacity: 0.85; text-shadow: 0 0 5px var(--pulse-orange); }
-            50% { transform: scale(1.04); opacity: 1; text-shadow: 0 0 20px var(--pulse-orange); }
+            50% { transform: scale(1.02); opacity: 1; text-shadow: 0 0 15px var(--pulse-orange); }
             100% { transform: scale(1); opacity: 0.85; text-shadow: 0 0 5px var(--pulse-orange); }
         }
 
@@ -229,23 +236,9 @@
                 background-attachment: scroll;
             }
 
-            .menu-icon {
-                top: 20px;
-                right: 20px;
-            }
-
-            .side-menu {
-                border-left: none;
-            }
-
-            .menu-content {
-                align-items: flex-start;
-                padding-top: 15vh;
-                padding-left: 12%;
-                padding-right: 5%;
-                width: 100%;
-                box-sizing: border-box;
-            }
+            .menu-icon { top: 20px; right: 20px; }
+            .side-menu { border-left: none; }
+            .menu-content { align-items: flex-start; padding-top: 15vh; padding-left: 12%; padding-right: 5%; width: 100%; box-sizing: border-box; }
 
             .header {
                 flex: 1;
@@ -257,30 +250,10 @@
                 margin-top: -20px; 
             }
 
-            .main-logo { 
-                width: 200px; 
-                margin-bottom: 0;
-            }
-            
-            h1 { 
-                font-size: 4.2rem; 
-                margin: 0;
-                line-height: 1.1;
-                width: 100%;
-            }
-            
-            .next-event {
-                margin-top: 20px;
-                width: 85%;
-                font-size: 0.7rem;
-                box-sizing: border-box;
-            }
-
-            .side-menu a {
-                font-size: 1.5rem;
-                text-align: left;
-                width: 100%;
-            }
+            .main-logo { width: 200px; margin-bottom: 0; }
+            h1 { font-size: 4.2rem; margin: 0; line-height: 1.1; width: 100%; }
+            .next-event { margin-top: 20px; width: 85%; font-size: 0.7rem; box-sizing: border-box; }
+            .side-menu a { font-size: 1.5rem; text-align: left; width: 100%; }
 
             footer {
                 margin-top: auto;
@@ -292,21 +265,9 @@
                 width: 100%;
             }
 
-            .footer-contact, .social-links {
-                margin: 0;
-            }
-
-            .social-links {
-                gap: 25px;
-            }
-
-            .copyright {
-                font-size: 0.55rem;
-                color: #888; 
-                letter-spacing: 1px;
-                margin-top: -5px;
-                margin-bottom: 5px;
-            }
+            .footer-contact, .social-links { margin: 0; }
+            .social-links { gap: 25px; }
+            .copyright { font-size: 0.55rem; color: #888; letter-spacing: 1px; margin-top: -5px; margin-bottom: 5px; }
         }
     </style>
 </head>
@@ -318,7 +279,7 @@
     <div class="menu-icon" onclick="toggleMenu(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
-        <div class="bar3"></div>
+        <div class="bar3)</div>
     </div>
 
     <nav id="sideMenu" class="side-menu">
