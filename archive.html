@@ -194,6 +194,9 @@
             pointer-events: none;
             z-index: -1;
         }
+        .lightbox-content {
+            cursor: e-resize;
+        }
     </style>
 </head>
 <body>
@@ -273,7 +276,18 @@
             updateLightbox();
         }
 
-        lightboxImg.onclick = () => changePhoto(1);
+        lightboxImg.onclick = (e) => {
+            e.stopPropagation();
+            
+            const rect = lightboxImg.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            
+            if (x < rect.width * 0.4) {
+                changePhoto(-1);
+            } else {
+                changePhoto(1);
+            }
+        };
         lightbox.onclick = (e) => { if (e.target === lightbox) closeLightbox(); };
         function closeLightbox() {
             lightbox.style.display = 'none';
@@ -288,6 +302,23 @@
                 if (e.key === "ArrowLeft") changePhoto(-1);
             }
         };
+
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        lightbox.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        lightbox.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        }, false);
+        
+        function handleGesture() {
+            if (touchendX < touchstartX - 50) changePhoto(1);
+            if (touchendX > touchstartX + 50) changePhoto(-1);
+        }
     </script>
 </body>
 </html>
