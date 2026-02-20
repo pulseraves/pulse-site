@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vision | Pulse.</title>
+    <link rel="icon" type="image/png" href="/Logo_nobackground.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pulse-orange: #C34E0A;
+            --bg: #000000;
+        }
+
+        body {
+            background-color: var(--bg);
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100dvh;
+            overflow: hidden;
+            text-align: center;
+            color: var(--pulse-orange);
+        }
+
+        #bg-image {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000 url("/Our Vision.jpg") no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.4) blur(0px); 
+            z-index: -1;
+            pointer-events: none;
+            transition: filter 0.8s ease-out;
+        }
+
+        .menu-icon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            z-index: 2001;
+            padding: 10px;
+        }
+
+        .menu-icon div {
+            width: 25px; height: 2px; background-color: white;
+            margin: 6px 0; transition: 0.4s;
+        }
+
+        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .change .bar2 { opacity: 0; }
+        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+        .side-menu {
+            height: 100dvh; width: 0; position: fixed; z-index: 2000;
+            top: 0; right: 0; background-color: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px); overflow-x: hidden;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; justify-content: flex-start;
+            border-left: 1px solid rgba(195, 78, 10, 0.3);
+        }
+
+        .menu-content {
+            display: flex; flex-direction: column; align-items: flex-start;
+            padding-top: 15vh; padding-left: 10%; padding-right: 5%;
+            gap: 40px; width: 100%; box-sizing: border-box;
+        }
+
+        .side-menu a {
+            text-decoration: none; font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: white; letter-spacing: 5px; transition: 0.3s;
+            white-space: nowrap; width: 100%;
+        }
+        .side-menu a:hover { color: var(--pulse-orange); }
+
+        .vision-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            padding: 0 40px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        .vision-logo {
+            width: 120px;
+            margin-bottom: 60px;
+            filter: drop-shadow(0 0 10px rgba(195, 78, 10, 0.3));
+        }
+
+        .vision-text {
+            line-height: 2;
+            letter-spacing: 3px;
+            font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            display: block;
+            margin-top: 40px;
+            font-size: 1.6em;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(195, 78, 10, 0.6);
+            animation: heartbeat 3s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
+            15% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 25px var(--pulse-orange); }
+            30% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
+            45% { transform: scale(1.05); opacity: 1; text-shadow: 0 0 25px var(--pulse-orange); }
+            100% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 10px var(--pulse-orange); }
+        }
+
+        @media (max-width: 600px) {
+            .menu-icon { top: 20px; right: 20px; }
+            .menu-content { padding-top: 12vh; padding-left: 12%; }
+            .side-menu { border-left: none; }
+            .vision-logo { width: 90px; margin-bottom: 40px; }
+            .vision-text { font-size: 0.85rem; line-height: 2.2; letter-spacing: 2px; }
+            .vision-container { padding: 0 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bg-image"></div>
+
+    <div class="menu-icon" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+
+    <nav id="sideMenu" class="side-menu">
+        <div class="menu-content">
+            <a href="/" onclick="toggleMenu()">HOME</a>
+            <a href="/archive/" onclick="toggleMenu()">Photobook</a>
+            <a href="/vision/" onclick="toggleMenu()">Vision</a>
+        </div>
+    </nav>
+
+    <div class="vision-container">
+        <img src="/Logo_nobackground.png" alt="Pulse Logo" class="vision-logo">
+        
+        <div class="vision-text">
+            Not every moment has to be captured.<br>
+            Some are here to be felt.<br><br>
+            Your camera will be covered by us<br>
+            but we're still capturing the moment for you.<br><br>
+            This is our way to build a different place.<br>
+            <span class="highlight">This is Pulse.</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(x) {
+            const icon = x || document.querySelector('.menu-icon');
+            icon.classList.toggle("change");
+            const menu = document.getElementById("sideMenu");
+            const isMobile = window.innerWidth <= 600;
+            const targetWidth = isMobile ? "100%" : "30%";
+            if (!menu.style.width || menu.style.width === "0px" || menu.style.width === "0%") {
+                menu.style.width = targetWidth;
+            } else {
+                menu.style.width = "0%";
+            }
+        }
+
+        const bg = document.getElementById('bg-image');
+        let blurTimeout;
+
+        function applyBlur() {
+            bg.style.filter = "brightness(0.4) blur(8px)";
+            
+            clearTimeout(blurTimeout);
+            
+            blurTimeout = setTimeout(() => {
+                bg.style.filter = "brightness(0.4) blur(0px)";
+            }, 1500);
+        }
+
+        window.addEventListener('mousemove', applyBlur);
+        window.addEventListener('touchstart', applyBlur);
+    </script>
+</body>
+</html>
