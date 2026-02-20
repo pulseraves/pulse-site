@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline'; img-src 'self' data: https:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulse.</title>
-    <link rel="icon" type="image/png" href="Logo_nobackground.png">
+    <link rel="icon" type="image/png" href="/Logo_nobackground.png">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     
     <style>
@@ -14,13 +14,11 @@
             --bg: #000000;
             --text: #FFFFFF;
         }
-
         body {
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
             font-family: sans-serif; 
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -28,6 +26,19 @@
             min-height: 100vh;
             overflow-x: hidden;
             text-align: center;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000 url("/Our Vision.jpg") no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.6); 
+            z-index: -1;
+            pointer-events: none;
         }
 
         h1 {
@@ -39,6 +50,7 @@
             letter-spacing: 0.03em;
             margin: 10px 0;
         }
+
         .next-event { 
             margin-top: 20px;
             margin-bottom: 20px;
@@ -58,7 +70,7 @@
         .main-logo {
             width: clamp(200px, 20vh, 320px);
             height: auto;
-            margin-top: 1vh
+            margin-top: 1vh;
             margin-bottom: 1vh;
             animation: pulse-dime 4s infinite ease-in-out;
             filter: contrast(1.1) brightness(1.1);
@@ -88,7 +100,6 @@
             letter-spacing: 2px;
             text-transform: none;
             transition: 0.3s;
-
             border: 1px solid #333;
             padding: 8px 15px;
         }
@@ -106,41 +117,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            width: 100%
-        }
-        footer a {
-            color: var(--pulse-orange);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        footer a:hover {
-            color: #fff;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                justify-content: flex-start;
-                padding-top: 60px;
-            }
-            nav {left: 50%; top: 20px; }
-            .main-logo { width: 220px; }
-            h1 { font-size: 2.5rem; }
-            .next-event {
-                margin-top: 20px;
-                margin-bottom: 40px;
-                width: 90%;
-                font-size: 0.8rem;
-            }
-
-            footer {
-                margin-top: 20px;
-            }
-
-            .social-links {
-                gap: 15px;
-                flex-wrap: wrap;
-            }
+            width: 100%;
         }
 
         footer {
@@ -149,6 +126,16 @@
             text-align: center;
             border-top: 1px solid #222;
             padding-top: 20px;
+        }
+
+        footer a {
+            color: var(--pulse-orange);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
         }
 
         .footer-contact {
@@ -185,10 +172,36 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                justify-content: flex-start;
+                padding-top: 80px;
+            }
+
+            body::before {
+                height: 100%;
+                background-attachment: scroll;
+            }
+
+            nav { left: 50%; top: 20px; }
+            .main-logo { width: 220px; }
+            h1 { font-size: 2.5rem; }
+            
+            .next-event {
+                margin-top: 20px;
+                margin-bottom: 40px;
+                width: 90%;
+                font-size: 0.8rem;
+            }
+
+            footer {
+                margin-top: 20px;
+            }
+
             .social-links {
                 gap: 15px;
                 flex-wrap: wrap;
             }
+            
             .social-links a {
                 font-size: 0.65rem;
             }
@@ -205,7 +218,9 @@
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
         <div class="next-event">Pulse. #2: announcement very soon</div>
-    </div> <footer>
+    </div> 
+
+    <footer>
         <div class="footer-contact">
             FOR BOOKINGS OR INQUIRIES: <a href="mailto:info@pulseraves.ch">info@pulseraves.ch</a>
         </div>
@@ -219,16 +234,4 @@
         <p class="copyright">&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
     </footer>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
