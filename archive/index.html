@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulse. #1 | Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/Logo_nobackground.png">
     <meta property="og:title" content="Pulse.">
     <meta property="og:description" content="Pulse. #1 | Archive">
@@ -33,38 +33,82 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("/Our Vision.jpg") no-repeat center center;
+            background: #000 url("/Our Vision.jpg") no-repeat center center;
             background-size: cover;
             filter: brightness(0.6); 
             z-index: -1;
             pointer-events: none;
         }
 
-        nav { margin-bottom: 60px; }
+        .menu-icon {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            z-index: 2001;
+            padding: 10px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 4px;
+        }
 
-        .back-button {
+        .menu-icon div {
+            width: 25px;
+            height: 2px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .change .bar2 { opacity: 0; }
+        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+        .side-menu {
+            height: 100dvh;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px);
+            overflow-x: hidden;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .side-menu a {
+            font-family: 'Orbitron', sans-serif;
             text-decoration: none;
-            color: var(--text);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            border: 1px solid #333;
-            padding: 10px 20px;
+            font-size: 1.8rem;
+            color: white;
+            letter-spacing: 5px;
             transition: 0.3s;
         }
 
-        .back-button:hover {
-            color: var(--pulse-orange);
-            border-color: var(--pulse-orange);
-        }
+        .side-menu a:hover { color: var(--pulse-orange); }
 
         h2 {
             font-weight: 500;
             font-size: 1.5rem;
             letter-spacing: 4px;
             color: var(--pulse-orange);
-            margin-bottom: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
             border-left: 4px solid var(--pulse-orange);
             padding-left: 15px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .archive-grid {
@@ -112,7 +156,7 @@
         .lightbox {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 3000; 
             top: 0;
             left: 0;
             width: 100%;
@@ -182,35 +226,36 @@
             opacity: 0.6;
             pointer-events: none;
         }
+
         @media (max-width: 600px) {
-            body::before {
-                height: 100%; 
-                background-attachment: scroll;
-            }
-                                
+            body { padding: 80px 15px 40px 15px; }
+            .menu-icon { top: 20px; right: 20px; }
             .archive-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
             .prev, .next { display: none; }
             .close-lightbox { top: 20px; right: 20px; font-size: 50px; }
             .lightbox-content { max-width: 95%; }
             #scrollTopBtn { bottom: 20px; right: 20px; padding: 10px; font-size: 0.8rem; }
-                    
-            .lightbox-logo {
-                width: 60px;
-                top: 20px;
-                left: 20px;
-            }
+            .side-menu a { font-size: 1.5rem; }
+            h2 { font-size: 1.1rem; margin-bottom: 25px; }
         }
 
-        .lightbox-content {
-            cursor: e-resize;
-        }
-
+        .lightbox-content { cursor: e-resize; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="/" class="back-button">← RETURN</a>
+    <div class="menu-icon" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+
+    <nav id="sideMenu" class="side-menu">
+        <div class="menu-content">
+            <a href="/" onclick="toggleMenu()">HOME</a>
+            <a href="/archive/" onclick="toggleMenu()">PHOTOBOOK</a>
+            <a href="/vision/" onclick="toggleMenu()">VISION</a>
+        </div>
     </nav>
 
     <h2>Pulse. #1 - Alte Kaserne</h2>
@@ -228,6 +273,17 @@
     </div>
 
     <script>
+        function toggleMenu(x) {
+            const icon = x || document.querySelector('.menu-icon');
+            icon.classList.toggle("change");
+            const menu = document.getElementById("sideMenu");
+            if (!menu.style.width || menu.style.width === "0px" || menu.style.width === "0%") {
+                menu.style.width = "100%";
+            } else {
+                menu.style.width = "0%";
+            }
+        }
+
         const gallery = document.getElementById('photo-gallery');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -249,7 +305,6 @@
             `;
             gallery.appendChild(item);
         }
-
 
         window.onscroll = function() { scrollFunction() };
 
@@ -286,16 +341,12 @@
 
         lightboxImg.onclick = (e) => {
             e.stopPropagation();
-            
             const rect = lightboxImg.getBoundingClientRect();
             const x = e.clientX - rect.left;
-            
-            if (x < rect.width * 0.4) {
-                changePhoto(-1);
-            } else {
-                changePhoto(1);
-            }
+            if (x < rect.width * 0.4) changePhoto(-1);
+            else changePhoto(1);
         };
+
         lightbox.onclick = (e) => { if (e.target === lightbox) closeLightbox(); };
         function closeLightbox() {
             lightbox.style.display = 'none';
@@ -313,15 +364,8 @@
 
         let touchstartX = 0;
         let touchendX = 0;
-
-        lightbox.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, false);
-        
-        lightbox.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            handleGesture();
-        }, false);
+        lightbox.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
+        lightbox.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleGesture(); }, false);
         
         function handleGesture() {
             if (touchendX < touchstartX - 50) changePhoto(1);

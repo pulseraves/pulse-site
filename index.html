@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline'; img-src 'self' data: https:;">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pulse.</title>
     <link rel="icon" type="image/png" href="/Logo_nobackground.png">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -23,8 +23,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            height: 100dvh;
+            overflow: hidden;
             text-align: center;
         }
         body::before {
@@ -41,6 +41,64 @@
             pointer-events: none;
         }
 
+        .menu-icon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            cursor: pointer;
+            z-index: 2001;
+            padding: 10px;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 2px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .change .bar2 { opacity: 0; }
+        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+        .side-menu {
+            height: 100dvh;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(15px);
+            overflow-x: hidden;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .side-menu a {
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            font-size: 1.8rem;
+            color: white;
+            letter-spacing: 5px;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            color: var(--pulse-orange);
+        }
+
+        /* --- MAIN CONTENT --- */
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 500;
@@ -82,34 +140,6 @@
             100% { opacity: 0.8; transform: scale(1); }
         }
 
-        nav {
-            position: absolute;
-            top: 40px;
-            left: 75%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 25px;
-            z-index: 100;
-        }
-
-        nav a {
-            font-family: 'Orbitron', sans-serif;
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: none;
-            transition: 0.3s;
-            border: 1px solid #333;
-            padding: 8px 15px;
-        }
-
-        nav a:hover {
-            color: var(--pulse-orange);
-            border-color: var(--pulse-orange);
-            background: rgba(195, 78, 10, 0.05);
-        }
-
         .header {
             flex: 1;
             display: flex;
@@ -126,13 +156,14 @@
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 40px;
-            background: linear-gradient(to top, rgba (0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
         }
 
         footer a {
             color: var(--pulse-orange);
             text-decoration: none;
             transition: 0.3s;
+            font-weight: 600;
         }
 
         footer a:hover {
@@ -185,16 +216,12 @@
                 height: 100%;
                 background-attachment: scroll;
             }
-            nav { 
-                position: relative;
-                left: auto;
-                top: 0;
-                transform: none;
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                z-index: 100;
+
+            .menu-icon {
+                top: 20px;
+                right: 20px;
             }
+
             .header {
                 flex: 1;
                 display: flex;
@@ -223,6 +250,11 @@
                 font-size: 0.7rem;
                 box-sizing: border-box;
             }
+
+            .side-menu a {
+                font-size: 1.5rem;
+            }
+
             footer {
                 margin-top: auto;
                 padding-bottom: env(safe-area-inset-bottom, 15px);
@@ -241,10 +273,6 @@
                 gap: 25px;
             }
 
-            .social-links a {
-                font-size: 0.75rem;
-                font-weight: 600;
-            }
             .copyright {
                 font-size: 0.55rem;
                 color: #888; 
@@ -257,11 +285,21 @@
 </head>
 
 <body>
+
+    <div class="menu-icon" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+
+    <nav id="sideMenu" class="side-menu">
+        <div class="menu-content">
+            <a href="/archive/" onclick="toggleMenu()">Photobook</a>
+            <a href="/vision/" onclick="toggleMenu()">Vision</a>
+        </div>
+    </nav>
+
     <div class="header">
-        <nav>
-            <a href="/archive/">Photobook</a>
-        </nav>
-        
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
         <div class="next-event">Pulse. #2: announcement soon</div>
@@ -280,5 +318,19 @@
 
         <p class="copyright">&copy; 2026 Pulse. KLG ALL RIGHTS RESERVED.</p>
     </footer>
+
+    <script>
+        function toggleMenu(x) {
+            const icon = x || document.querySelector('.menu-icon');
+            icon.classList.toggle("change");
+            
+            const menu = document.getElementById("sideMenu");
+            if (!menu.style.width || menu.style.width === "0px" || menu.style.width === "0%") {
+                menu.style.width = "100%";
+            } else {
+                menu.style.width = "0%";
+            }
+        }
+    </script>
 </body>
 </html>
