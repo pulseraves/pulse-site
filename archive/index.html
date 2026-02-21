@@ -107,7 +107,7 @@
             width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px); justify-content: center; align-items: center;
         }
-        .lightbox-content { max-width: 90%; max-height: 85%; border: 1px solid var(--pulse-orange); cursor: pointer; }
+        .lightbox-content { max-width: 90%; max-height: 85%; border: 1px solid var(--pulse-orange); cursor: pointer; transition: opacity 0.3s ease-in-out; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
         .prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 20px; color: var(--pulse-orange); font-size: 40px; text-decoration: none; user-select: none; }
         .prev { left: 20px; } .next { right: 20px; }
@@ -188,12 +188,12 @@
 
         for (let i = 1; i <= totalPhotos; i++) {
             const photoNumber = String(i).padStart(3, '0');
-            const fileName = `/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
+            const thumbName = `/images/thumbnails/Pulse-Santos_amebe_${photoNumber}_Web_Thumb.jpg`;
             const dynamicLabel = `${photoNumber} / FEB_2026`;
             const item = document.createElement('div');
             item.className = 'archive-item';
             item.onclick = () => openLightbox(i);
-            item.innerHTML = `<img src="${fileName}" alt="Pulse Event ${photoNumber}" loading="lazy"><div class="event-label">${dynamicLabel}</div>`;
+            item.innerHTML = `<img src="${thumbName}" alt="Pulse Event ${photoNumber}" loading="lazy"><div class="event-label">${dynamicLabel}</div>`;
             gallery.appendChild(item);
         }
         window.onscroll = function() { scrollFunction() };
@@ -207,7 +207,12 @@
         }
         function updateLightbox() {
             const photoNumber = String(currentPhotoIndex).padStart(3, '0');
-            lightboxImg.src = `/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
+            const fullSizeName = '/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg';
+            lightboxImg.style.opacity = '0';
+            lightboxImg.src = fullSizeName;
+            lightboxImg.onload = () => {
+                lightboxImg.style.opacity = '1';
+            }
         }
         function changePhoto(step) {
             currentPhotoIndex += step;
