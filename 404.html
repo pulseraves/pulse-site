@@ -22,41 +22,62 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden;
+        }
+
+        #bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000 url("/Our Vision.webp?v=2") no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.5);
+            z-index: -1;
         }
 
         h1 {
-            font-size: 8rem;
+            font-size: clamp(4rem, 15vw, 10rem);
             margin: 0;
             color: var(--pulse-orange);
             letter-spacing: 10px;
+            text-shadow: 0 0 20px rgba(195, 78, 10, 0.5);
         }
 
         p {
             letter-spacing: 2px;
-            margin-bottom: 30px;
-            opacity: 0.8;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-size: clamp(0.7rem, 2vw, 1rem);
         }
 
         .back-home {
             text-decoration: none;
             color: white;
             border: 1px solid var(--pulse-orange);
-            padding: 12px 30px;
+            padding: 15px 40px;
             transition: 0.3s;
             font-size: 0.8rem;
+            letter-spacing: 3px;
+            background: rgba(0, 0, 0, 0.4); /* Glass effect on the button */
+            backdrop-filter: blur(5px);
         }
 
         .back-home:hover {
             background: var(--pulse-orange);
-            box-shadow: 0 0 20px var(--pulse-orange);
+            box-shadow: 0 0 30px var(--pulse-orange);
+            color: white;
         }
     </style>
 </head>
 <body>
 
+    <div id="bg-image"></div>
+
     <h1>404</h1>
     <p>Got lost? This page does not exist.</p>
-    <a href="https://www.pulseraves.ch" class="back-home">RETURN TO PULSE.</a>
+    <a href="https://www.pulseraves.ch" class="back-home">Return to Pulse.</a>
 
 </body>
 </html>
