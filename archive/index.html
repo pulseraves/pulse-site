@@ -207,7 +207,7 @@
         }
         function updateLightbox() {
             const photoNumber = String(currentPhotoIndex).padStart(3, '0');
-            const fullSizeName = '/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg';
+            const fullSizeName = `/images/Pulse-Santos_amebe_${photoNumber}_Web.jpg`;
             lightboxImg.style.opacity = '0';
             lightboxImg.src = fullSizeName;
             lightboxImg.onload = () => {
