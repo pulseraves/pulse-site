@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse. | DJ Sets</title>
+    <link rel="icon" type="image/png" href="/Logo_nobackground.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pulse-orange: #C34E0A;
+            --bg: #000000;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000 url("/Our Vision.webp?v=2") no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.3);
+            z-index: -1;
+        }
+
+        .menu-icon {
+            position: fixed; top: 40px; right: 40px;
+            cursor: pointer; z-index: 2001; padding: 10px;
+            background: rgba(0,0,0,0.5); border-radius: 4px;
+        }
+        .menu-icon div { width: 25px; height: 2px; background-color: white; margin: 6px 0; transition: 0.4s; }
+        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .change .bar2 { opacity: 0; }
+        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+        .side-menu {
+            height: 100dvh; width: 0; position: fixed; z-index: 2000;
+            top: 0; right: 0; background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px); transition: 0.5s;
+            display: flex; flex-direction: column; border-left: 1px solid rgba(195, 78, 10, 0.3);
+            overflow-x: hidden;
+        }
+        .menu-content { display: flex; flex-direction: column; padding: 15vh 10% 0 10%; gap: 40px; }
+        .side-menu a { text-decoration: none; font-size: 1.5rem; color: white; letter-spacing: 5px; transition: 0.3s; }
+        .side-menu a:hover { color: var(--pulse-orange); }
+
+        /* --- CONTENT --- */
+        header { padding: 100px 20px 40px; text-align: center; }
+        h1 { color: var(--pulse-orange); letter-spacing: 8px; font-size: 2rem; text-transform: uppercase; }
+
+        .sets-grid {
+            max-width: 1200px; margin: 0 auto; padding: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px 40px;
+        }
+
+        .set-item { display: flex; flex-direction: column; }
+        
+        .set-info { margin-bottom: 15px; border-left: 3px solid var(--pulse-orange); padding-left: 15px; text-align: left; }
+        .dj-name { font-size: 1.2rem; color: var(--pulse-orange); letter-spacing: 2px; display: block; }
+        .set-details { font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-top: 5px; display: block; }
+
+        .video-container {
+            position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0; overflow: hidden; border: 1px solid #222;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            filter: grayscale(0.2) contrast(1.1); transition: 0.5s;
+        }
+        .video-container:hover iframe { filter: grayscale(0) contrast(1); }
+
+        @media (max-width: 600px) {
+            .menu-icon { top: 20px; right: 20px; }
+            h1 { font-size: 1.5rem; }
+            .sets-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-icon" onclick="toggleMenu(this)">
+        <div class="bar1"></div><div class="bar2"></div><div class="bar3"></div>
+    </div>
+
+    <nav id="sideMenu" class="side-menu">
+        <div class="menu-content">
+            <a href="/">HOME</a>
+            <a href="/photobook/">PHOTOBOOK</a>
+            <a href="/vision/">VISION</a>
+            <a href="/sets/">SETS</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Recorded Sets</h1>
+    </header>
+
+    <div class="sets-grid">
+        <div class="set-item">
+            <div class="set-info">
+                <span class="dj-name">SANTØS</span>
+                <span class="set-details">02:00 - 04:00 | ALTE KASERNE, ZH</span>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/s5U2Lpw4YZY" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+
+    <script>
+        function toggleMenu(x) {
+            const menu = document.getElementById("sideMenu");
+            const icon = x || document.querySelector('.menu-icon');
+            icon.classList.toggle("change");
+            menu.style.width = (menu.style.width === "100%" || menu.style.width === "30%") ? "0" : (window.innerWidth <= 600 ? "100%" : "30%");
+        }
+    </script>
+</body>
+</html>
