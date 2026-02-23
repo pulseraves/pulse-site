@@ -40,7 +40,7 @@
             filter: brightness(0.6) blur(0px); 
             z-index: -1;
             pointer-events: none;
-            transition: filter 1.2s ease-out;
+            transition: filter 0.5s ease-out;
         }
 
         .menu-icon {
@@ -264,7 +264,7 @@
             clearTimeout(blurTimeout);
             blurTimeout = setTimeout(() => {
                 bg.style.filter = "brightness(0.6) blur(0px)";
-            }, 1200);
+            }, 500);
         }
 
         window.addEventListener('mousemove', applyBlur);
