@@ -55,8 +55,18 @@
             display: flex; flex-direction: column; border-left: 1px solid rgba(35, 128, 208, 0.3); 
         }
 
-        .menu-content { display: flex; flex-direction: column; padding-top: 15vh; padding-left: 10%; gap: 40px; box-sizing: border-box; }
-        .side-menu a { font-family: 'Orbitron', sans-serif; text-decoration: none; font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: white; letter-spacing: 5px; transition: 0.3s; }
+        .menu-content { display: flex; flex-direction: column; padding-top: 15vh; padding-left: 10%; gap: 40px; box-sizing: border-box; width: 100%; align-items: flex-start; }
+        .side-menu a { 
+            font-family: 'Orbitron', sans-serif; 
+            text-decoration: none; 
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); 
+            color: white; 
+            letter-spacing: 5px; 
+            transition: 0.3s;
+            text-align: left;
+            display: block;
+            width: fit-content;
+        }
         .side-menu a:hover { color: var(--pulse-blue); text-shadow: 0 0 10px rgba(35, 128, 208, 0.5); }
         .active-link { color: var(--pulse-blue) !important; border-bottom: 1px solid var(--pulse-blue); padding-bottom: 5px; }
 
