@@ -61,8 +61,8 @@
         .active-link { color: var(--pulse-blue) !important; border-bottom: 1px solid var(--pulse-blue); padding-bottom: 5px; }
 
         .header { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
-        h1 { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: clamp(3rem, 12vw, 8rem); margin: 10px 0; animation: textPulse 4s infinite ease-in-out; }
-        .main-logo { width: clamp(200px, 20vh, 320px); height: auto; filter: contrast(1.1) brightness(1.1); animation: logoPulse 4s infinite ease-in-out; }
+        h1 { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: clamp(3rem, 12vw, 8rem); margin: 0px 0 10px 0; animation: textPulse 4s infinite ease-in-out; }
+        .main-logo { width: clamp(200px, 20vh, 320px); height: auto; filter: contrast(1.1) brightness(1.1); animation: logoPulse 4s infinite ease-in-out; margin-bottom: -10px;}
 
         .next-event { 
             margin-top: 15px; margin-bottom: 15px; display: inline-flex;
@@ -113,7 +113,7 @@
 
         @media (max-width: 600px) {
             .next-event { width: 90%; padding: 20px 15px; gap: 10px; }
-            h1 { font-size: 4.2rem; }
+            h1 { font-size: 4.2rem; margin-top: 0; margin-bottom: 5px;}
             .main-logo { width: 200px; }
             .reveal-time, #countdown { font-size: 1.1rem; letter-spacing: 2px; }
         }
@@ -178,7 +178,7 @@
             menu.style.width = (menu.style.width === "100%" || menu.style.width === "30%") ? "0" : (isMobile ? "100%" : "30%");
         }
 
-        const ticketDate = new Date("February 25, 2026 14:49:30").getTime();
+        const ticketDate = new Date("March 1, 2026 18:00:00").getTime();
         const secondArtistDate = new Date("March 8, 2026 18:00:00").getTime();
 
         const timer = setInterval(function() {
