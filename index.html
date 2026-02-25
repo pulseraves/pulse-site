@@ -60,9 +60,13 @@
             transition: 0.4s;
         }
 
-        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); }
+        .change .bar1 { transform: rotate(-45deg) translate(-5px, 6px); background-color: var(--pulse-blue); }
         .change .bar2 { opacity: 0; }
-        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
+        .change .bar3 { transform: rotate(45deg) translate(-5px, -6px); background-color: var(--pulse-blue);}
+
+        .change div{
+            box-shadow: 0 0 8px var(--pulse-blue);
+        }
 
         .side-menu {
             height: 100dvh;
@@ -107,6 +111,7 @@
 
         .side-menu a:hover {
             color: var(--pulse-blue);
+            text-shadow: 0 0 10px rgba(35, 128, 208, 0.5);
         }
 
         .header {
@@ -152,6 +157,12 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .active-link{
+            color: var(--pulse-blue) !important;
+            border-bottom: 1px solid var(--pulse-blue);
+            padding-bottom: 5px;
         }
 
         @keyframes logoPulse {
@@ -214,6 +225,7 @@
 
     <nav id="sideMenu" class="side-menu">
         <div class="menu-content">
+            <a href="/" class="active-link" onclick="toggleMenu()">Home</a>
             <a href="/photobook/" onclick="toggleMenu()">Photobook</a>
             <a href="/vision/" onclick="toggleMenu()">Vision</a>
             <a href="/sets/" onclick="toggleMenu()">DJ Sets</a>
@@ -223,7 +235,9 @@
     <div class="header">
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
-        <div class="next-event">Pulse. #2: 1st Artist Reveal & Ticket drop &bull; March 1st &bull; 18:00</div>
+        <div class="next-event">
+            Pulse. #2: 1st Artist Reveal & Ticket drop<br>
+            01.03.2026 &bull; 18:00</div>
     </div> 
 
     <footer>
