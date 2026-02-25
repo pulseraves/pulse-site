@@ -65,9 +65,9 @@
         .main-logo { width: clamp(200px, 20vh, 320px); height: auto; filter: contrast(1.1) brightness(1.1); animation: logoPulse 4s infinite ease-in-out; }
 
         .next-event { 
-            margin-top: 30px; margin-bottom: 30px; display: inline-flex;
-            flex-direction: column; align-items: center; gap: 12px;
-            border: 1px solid var(--pulse-blue); padding: 25px 40px;
+            margin-top: 15px; margin-bottom: 15px; display: inline-flex;
+            flex-direction: column; align-items: center; gap: 8px;
+            border: 1px solid var(--pulse-blue); padding: 20px 40px;
             font-family: 'Orbitron', sans-serif; text-transform: uppercase;
             background: rgba(35, 128, 208, 0.05);
             box-shadow: 0 0 15px rgba(35, 128, 208, 0.2), inset 0 0 10px rgba(35, 128, 208, 0.1);
@@ -89,9 +89,9 @@
         #lineup-reveal-container {
             display: none;
             flex-direction: column; align-items: center; width: 100%;
-            margin-top: 20px; padding-top: 20px;
+            margin-top: 10px; padding-top: 15px;
             border-top: 1px solid rgba(35, 128, 208, 0.3);
-            gap: 20px;
+            gap: 15px;
         }
 
         .ticket-link {
@@ -178,7 +178,7 @@
             menu.style.width = (menu.style.width === "100%" || menu.style.width === "30%") ? "0" : (isMobile ? "100%" : "30%");
         }
 
-        const ticketDate = new Date("February 25, 2026 14:40:30").getTime();
+        const ticketDate = new Date("February 25, 2026 14:46:30").getTime();
         const secondArtistDate = new Date("March 8, 2026 18:00:00").getTime();
 
         const timer = setInterval(function() {
