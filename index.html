@@ -144,19 +144,40 @@
             filter: contrast(1.1) brightness(1.1);
             animation: logoPulse 4s infinite ease-in-out;
         }
+        .reveal-label {
+            font-size: 0.75em;
+            opacity: 0.8;
+            letter-spacing: 2px;
+        }
+
+        .reveal-time {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px var(--pulse-blue), 0 0 20px var(--pulse-blue);
+            letter-spacing: 4px;
+        }
 
         .next-event { 
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: inline-block;
-            width: auto; 
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            
             border: 1px solid var(--pulse-blue); 
-            padding: 10px 25px; 
+            padding: 25px 40px;
             color: var(--text);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+
+            font-size: clamp(1rem, 2.5vw, 1.2rem); 
+            line-height: 1.5;
+            letter-spacing: 3px;
             text-transform: uppercase;
+
+            background: rgba(35, 128, 208, 0.05);
+            box-shadow: 0 0 15px rgba(35, 128, 208, 0.2), inset 0 0 10px rgba(35, 128,208, 0.1);
         }
 
         .active-link{
@@ -203,7 +224,7 @@
             .header { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; margin-top: -20px; }
             .main-logo { width: 200px; margin-bottom: 0; }
             h1 { font-size: 4.2rem; margin: 0; line-height: 1.1; width: 100%; }
-            .next-event { margin-top: 20px; width: 85%; font-size: 0.65rem; box-sizing: border-box; }
+            .next-event { margin-top: 25px; width: 90%; font-size: 0.9rem; padding: 15px 15px; }
             .side-menu a { font-size: 1.5rem; text-align: left; width: 100%; }
             footer { margin-top: auto; padding-bottom: env(safe-area-inset-bottom, 15px); display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
             .footer-contact, .social-links { margin: 0; }
@@ -236,8 +257,9 @@
         <img src="Logo_nobackground.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
         <div class="next-event">
-            Pulse. #2: 1st Artist Reveal & Ticket drop<br>
-            01.03.2026 &bull; 18:00</div>
+            <span class="reveal-label"> Pulse. #2: 1st Artist Reveal & Ticket drop<span>
+            <span class="reveal-time">01.03.2026 &bull; 18:00</span>
+        </div>
     </div> 
 
     <footer>
