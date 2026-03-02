@@ -20,8 +20,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100dvh;
-            overflow: hidden;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            overflow-y: auto;
             text-align: center;
             color: var(--pulse-orange);
         }
@@ -87,9 +88,10 @@
             justify-content: center;
             align-items: center;
             max-width: 900px;
-            padding: 0 40px;
+            padding: 60px 40px;
             box-sizing: border-box;
             z-index: 10;
+            margin: auto 0;
         }
 
         .vision-logo {
@@ -102,6 +104,7 @@
             line-height: 2.2;
             letter-spacing: 3px;
             font-size: clamp(0.9rem, 1.6vw, 1.5rem);
+            padding-bottom: 20px;
         }
 
         .highlight {
@@ -183,11 +186,11 @@
         let blurTimeout;
 
         function applyBlur() {
-            bg.style.filter = "brightness(0.4) blur(4px)";
+            bg.style.filter = "brightness(0.55) blur(1.5px)";
             clearTimeout(blurTimeout);
             blurTimeout = setTimeout(() => {
                 bg.style.filter = "brightness(0.4) blur(0px)";
-            }, 500);
+            }, 600);
         }
 
         window.addEventListener('mousemove', applyBlur);
