@@ -24,17 +24,12 @@
             font-family: sans-serif; 
             text-align: center;
             overflow-x: hidden;
-            overflow-y: hidden;
             height: 100dvh;
             display: flex;
             flex-direction: column;
         }
 
-        body.event-live {
-            overflow-y: auto;
-            height: auto;
-            display: block;
-        }
+        body.event-live { overflow-y: auto; height: auto; display: block; }
 
         #bg-image {
             position: fixed;
@@ -68,7 +63,7 @@
 
         .hero { 
             min-height: 100dvh; 
-            padding: 20px 0;
+            padding: 15px 0;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -76,71 +71,80 @@
             justify-content: center;
         }
 
-        h1 { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: clamp(3rem, 10vh, 8rem); margin: 0; animation: textPulse 4s infinite ease-in-out; }
-        .main-logo { width: clamp(150px, 15vh, 280px); height: auto; animation: logoPulse 4s infinite ease-in-out; margin-bottom: -15px;}
+        h1 { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: clamp(2.8rem, 7vh, 7.5rem); margin: 0; animation: textPulse 4s infinite ease-in-out; }
+        .main-logo { width: clamp(110px, 11vh, 230px); height: auto; animation: logoPulse 4s infinite ease-in-out; margin-bottom: -10px;}
 
         .next-event { 
-            margin-top: 5px; display: inline-flex;
-            flex-direction: column; align-items: center; gap: 15px;
-            border: 1px solid var(--pulse-blue); padding: 25px 45px;
+            margin-top: 10px; display: inline-flex;
+            flex-direction: column; align-items: center; gap: 12px;
+            border: 1px solid var(--pulse-blue); padding: 20px 25px;
             font-family: 'Orbitron', sans-serif; text-transform: uppercase;
             background: rgba(35, 128, 208, 0.05);
             max-width: 90vw;
             box-shadow: 0 0 20px rgba(35, 128, 208, 0.2);
         }
 
-        .reveal-time {
+        /* 1. DATE/TIME: Restored Pulse Blue color and text-shadow */
+        /* 2. DATE/TIME: Reduced clamp size range for smaller font */
+        .event-info-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: var(--pulse-blue);
+            font-size: clamp(1.2rem, 3.2vh, 2.8rem);
+            text-shadow: 0 0 10px rgba(35, 128, 208, 0.5);
+            letter-spacing: 4px;
+            line-height: 1.1;
+        }
+
+        .location-text {
+            font-size: clamp(0.75rem, 1.8vh, 1.1rem);
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            margin-top: 0px; 
+            opacity: 0.9;
+            width: 100%;
+        }
+
+        .lineup-section { margin-top: 5px; width: 100%; }
+
+        .final-lineup {
             display: flex;
             flex-direction: column;
             gap: 0;
             align-items: center;
             width: 100%;
-            font-size: clamp(1.8rem, 5.5vh, 4.5rem); 
+            font-size: clamp(1.4rem, 4vh, 3.2rem); 
             font-weight: 600;
             color: #FFFFFF;
             text-shadow: 0 0 15px var(--pulse-blue), 0 0 5px #FFFFFF;
             letter-spacing: 6px;
+            line-height: 1.1;
         }
 
-        .reveal-time span {
-            display: block;
-            width: 100%;
-            text-align: center;
-            white-space: nowrap;
-        }    
-
-        #countdown-container { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }
-        .reveal-label { display: block; font-size: clamp(0.8rem, 1.8vh, 1.1rem); opacity: 0.9; letter-spacing: 3px; }
+        .reveal-label { display: block; font-size: clamp(0.7rem, 1.6vh, 1rem); opacity: 0.9; letter-spacing: 3px; margin-bottom: 5px; }
         .blue-text { color: var(--pulse-blue); font-weight: 600; }
-        
-        #countdown {
-            font-size: clamp(1.1rem, 3vw, 1.8rem); font-weight: 600; color: #FFFFFF;
-            text-shadow: 0 0 10px var(--pulse-blue); letter-spacing: 4px;
-        }
-
-        #lineup-reveal-container {
-            display: none; flex-direction: column; align-items: center; width: 100%;
-            margin-top: 10px; padding-top: 5px; gap: 25px;
-        }
 
         .ticket-link {
             text-decoration: none; color: white; border: 1px solid white;
-            padding: 12px 35px; font-size: clamp(0.8rem, 1.5vh, 1.1rem); transition: 0.3s; 
+            padding: 10px 25px; font-size: clamp(0.75rem, 1.6vh, 1.1rem); transition: 0.3s; 
             background: rgba(35, 128, 208, 0.15); letter-spacing: 4px;
+            margin-top: 10px;
         }
         .ticket-link:hover { background: var(--pulse-blue); box-shadow: 0 0 20px var(--pulse-blue); border-color: var(--pulse-blue); }
 
         .scroll-arrow {
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            margin: 30px auto 0 auto; width: 100%; cursor: pointer; text-decoration: none; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: 20px auto 0 auto; width: 100%; cursor: pointer; text-decoration: none; 
             color: var(--pulse-blue); font-family: 'Orbitron', sans-serif; font-size: 0.6rem; letter-spacing: 2px;
+            animation: arrowBounce 2s infinite;
         }
-        body.event-live .scroll-arrow { display: flex; animation: arrowBounce 2s infinite; }
         .arrow-icon { width: 15px; height: 15px; border-right: 2px solid var(--pulse-blue); border-bottom: 2px solid var(--pulse-blue); transform: rotate(45deg); }
 
-        #faq-section { display: none; width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 40px 80px 40px; box-sizing: border-box; text-align: left; }
-        body.event-live #faq-section { display: block; }
-        .faq-title { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: 2rem; letter-spacing: 8px; margin-bottom: 60px; border-bottom: 1px solid rgba(35, 128, 208, 0.3); padding-bottom: 15px; }
+        #faq-section { width: 100%; max-width: 900px; margin: 0 auto; padding: 40px 40px 80px 40px; box-sizing: border-box; text-align: left; }
+        .faq-title { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: 2rem; letter-spacing: 8px; margin-bottom: 50px; border-bottom: 1px solid rgba(35, 128, 208, 0.3); padding-bottom: 15px; }
         .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; }
         .faq-item h3 { font-family: 'Orbitron', sans-serif; color: var(--pulse-blue); font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 15px; }
         .faq-item p { opacity: 0.9; line-height: 1.6; font-size: 1rem; margin: 0; white-space: pre-line; }
@@ -148,37 +152,27 @@
         #backToTop { position: fixed; bottom: 30px; right: 30px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--pulse-blue); color: var(--pulse-blue); font-family: 'Orbitron', sans-serif; font-size: 0.7rem; padding: 12px 18px; cursor: pointer; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.4s; letter-spacing: 2px; backdrop-filter: blur(5px); }
         #backToTop.show { opacity: 1; visibility: visible; }
 
-        footer { 
-            margin-top: auto; 
-            width: 100%; 
-            padding-bottom: 40px; 
-            padding-top: 60px; 
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); 
-        }
+        footer { margin-top: auto; width: 100%; padding-bottom: 40px; padding-top: 60px; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); }
         footer a { color: var(--pulse-blue); text-decoration: none; font-weight: 600; transition: 0.3s; }
-        footer a:hover { text-shadow: 0 0 10px var(--pulse-blue); }
         .footer-contact { font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 25px; color: #888; }
         .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
         .social-links a { text-decoration: none; color: var(--pulse-blue); font-size: 0.75rem; letter-spacing: 2px; }
         .copyright { font-size: 0.55rem; color: #666; letter-spacing: 1px; }
 
-        .flicker { animation: neonFlicker 4s infinite; display: inline-block; }
-        @keyframes neonFlicker { 0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; text-shadow: 0 0 8px var(--pulse-blue); } 20%, 24%, 55% { opacity: 0.3; text-shadow: none; } }
         @keyframes logoPulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.04); opacity: 1; } }
         @keyframes textPulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.02); opacity: 1; } }
         @keyframes arrowBounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
         @media (max-width: 600px) {
-            h1 { font-size: 3.8rem; }
-            .next-event { width: 85%; padding: 20px 15px; gap: 15px; }
-            .reveal-label { font-size: 0.75rem; }
-            .reveal-time { font-size: clamp(1.8rem, 8vw, 2.8rem); letter-spacing: 3px; gap: 10px; }
+            h1 { font-size: 3.2rem; }
+            .next-event { width: 88%; padding: 15px 15px; gap: 10px; }
             .menu-icon { top: 20px; right: 20px; }
+            .hero { padding-bottom: 5px; }
         }
     </style>
 </head>
 
-<body>
+<body class="event-live">
     <div id="bg-image"></div>
     <button id="backToTop" onclick="scrollToTop()">TOP</button>
 
@@ -199,18 +193,28 @@
         <img src="Logo_nobackground_blue.png" alt="Pulse Logo" class="main-logo">
         <h1>Pulse.</h1>
         <div class="next-event">
-            <div id="countdown-container">
-                <span class="reveal-label"><span class="blue-text">Pulse. #2:</span> <span id="countdown-task">Accessing Data...</span></span>
-                <span id="countdown">––:––:––</span>
+            <div class="event-info-main">
+                <span>29.05.2026</span>
+                <span>23:00 — 06:00</span>
             </div>
-            <div id="lineup-reveal-container">
-                <div class="lineup-section">
-                    <span class="reveal-label"><span class="blue-text">Line-up (A-Z):</span></span>
-                    <div class="reveal-time">xxx</div>
+            
+            <div class="location-text">
+                LABOR5, SCHIFFBAUSTRASSE 3, 8005 ZÜRICH
+            </div>
+
+            <div class="lineup-section">
+                <span class="reveal-label"><span class="blue-text">LINE-UP (A-Z):</span></span>
+                <div class="final-lineup">
+                    <span>BLNK</span>
+                    <span>DOMA</span>
+                    <span>EMA LEO</span>
+                    <span>JO3Y3T</span>
                 </div>
-                <a href="https://eventfrog.ch/de/p/party/house-techno/pulse-rave-2-7390757013767095148.html" id="ticket-btn" class="ticket-link" target="_blank">GET TICKETS</a>
             </div>
+
+            <a href="https://eventfrog.ch/de/p/party/house-techno/pulse-rave-2-7390757013767095148.html" id="ticket-btn" class="ticket-link" target="_blank">GET TICKETS</a>
         </div>
+
         <a href="#faq-anchor" class="scroll-arrow">
             <span>FAQ</span>
             <div class="arrow-icon"></div>
@@ -285,91 +289,23 @@
         let isMouseBlurring = false;
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                btt.classList.add('show');
-            } else {
-                btt.classList.remove('show');
-            }
+            if (window.scrollY > 400) { btt.classList.add('show'); } 
+            else { btt.classList.remove('show'); }
 
             if (isMouseBlurring) return;
             const scrollPercent = Math.min(window.scrollY / 600, 1); 
-            const blurValue = scrollPercent * 8;
-            const brightnessValue = 0.6 - (scrollPercent * 0.3);
-            bg.style.filter = `brightness(${brightnessValue}) blur(${blurValue}px)`;
+            bg.style.filter = `brightness(${0.6 - (scrollPercent * 0.3)}) blur(${scrollPercent * 8}px)`;
         });
 
         function applyBlur() {
             isMouseBlurring = true;
-            const scrollPercent = Math.min(window.scrollY / 600, 1);
-            const baseBlur = scrollPercent * 8;
+            const baseBlur = (Math.min(window.scrollY / 600, 1)) * 8;
             bg.style.filter = `brightness(0.55) blur(${baseBlur + 1.5}px)`;
-            
             clearTimeout(window.blurResetTimeout);
-            window.blurResetTimeout = setTimeout(() => { 
-                isMouseBlurring = false;
-                const currentScroll = Math.min(window.scrollY / 600, 1);
-                const finalBlur = currentScroll * 8;
-                const finalBrightness = 0.6 - (currentScroll * 0.3);
-                bg.style.filter = `brightness(${finalBrightness}) blur(${finalBlur}px)`;
-            }, 600);
+            window.blurResetTimeout = setTimeout(() => { isMouseBlurring = false; }, 600);
         }
         window.addEventListener('mousemove', applyBlur);
         window.addEventListener('touchstart', applyBlur);
-
-        const revealSchedule = [
-            { date: new Date("March 1, 2026 18:00:00").getTime(), name: "BLNK", task: "1st Artist & Ticket Drop In:" },
-            { date: new Date("March 8, 2026 18:00:00").getTime(), name: "DOMA", task: "2nd Artist Reveal In:" },
-            { date: new Date("March 15, 2026 18:00:00").getTime(), name: "EMA LEO", task: "3rd Artist Reveal In:" },
-            { date: new Date("March 22, 2026 18:00:00").getTime(), name: "JO3Y3T", task: "Final Artist Reveal In:" }
-        ];
-
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            let lineupHTML = "";
-            let nextRevealIndex = -1;
-
-            revealSchedule.forEach((item, index) => {
-                if (now >= item.date) {
-                    lineupHTML += `<span>${item.name}</span>`;
-                } else if (nextRevealIndex === -1) {
-                    nextRevealIndex = index;
-                }
-            });
-
-            if (lineupHTML !== "") {
-                document.body.classList.add('event-live');
-                document.getElementById("lineup-reveal-container").style.display = "flex";
-                
-                const showTBA = now < revealSchedule[revealSchedule.length - 1].date;
-                const tbaSpan = showTBA ? `<span class="flicker" style="font-size: 0.5em; letter-spacing: 2px; margin-top: 2px; opacity: 0.8;">+ MORE TBA</span>` : "";
-                
-                document.querySelector('.reveal-time').innerHTML = lineupHTML + tbaSpan;
-            }
-
-            const countdownCont = document.getElementById("countdown-container");
-            
-            if (nextRevealIndex === -1) {
-                countdownCont.style.display = "none";
-                clearInterval(timer);
-            } else {
-                const target = revealSchedule[nextRevealIndex].date;
-                const distance = target - now;
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                let countdownString = "";
-                if (days > 0) countdownString += days + "d ";
-                if (hours > 0 || days > 0) countdownString += hours + "h ";
-                if (minutes > 0 || hours > 0 || days > 0) countdownString += minutes + "m ";
-                countdownString += seconds + "s";
-
-                document.getElementById("countdown-task").innerText = revealSchedule[nextRevealIndex].task;
-                document.getElementById("countdown").innerHTML = countdownString;
-            }
-        }, 1000);
     </script>
 </body>
 </html>
